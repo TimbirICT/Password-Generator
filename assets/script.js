@@ -9,6 +9,7 @@ var special = "!@#$%^&*()_+";
 var numbers = "0123456789";
 
 
+prompt ("how many characters would you like your password to be?");
 
 
 // Write password to the #password input
@@ -21,27 +22,11 @@ function writePassword() {
 
 
 function generatePassword() {
-    let password = "";
-    password += upperCase[Math.floor(Math.random() * upperCase.length)];
-    password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-    password += numbers[Math.floor(Math.random() * numbers.length)];
-    password += special[Math.floor(Math.random() * special.length)];
-  
+    
   }
-      while (generatedPassword.length < length) {
-          password += characters[Math.floor(Math.random() * characters.length)];
-      }
-  {
+ 
+ passwordText.value = generatePassword;
   
-    passwordText.value = generatePassword;
-  
-
-}
-
-
-
-
-
 
 
 // Add event listener to generate button
