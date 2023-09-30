@@ -2,9 +2,9 @@
 var generateBtn = document.querySelector("#generate");
 
 
-var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-var lowercase = "abcdefghijklmnopqrstuvwxyz";
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var characters = lowerCase + upperCase + numbers + special;
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var special = "!@#$%^&*()_+";
 var numbers = "0123456789";
 
@@ -15,46 +15,40 @@ var numbers = "0123456789";
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  passwordText.value = generatedPassword;
 
-  passwordText.value = password;
+} 
+
+
+function generatePassword() {
+    let password = "";
+    password += upperCase[Math.floor(Math.random() * upperCase.length)];
+    password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    password += numbers[Math.floor(Math.random() * numbers.length)];
+    password += special[Math.floor(Math.random() * special.length)];
+  
+  }
+      while (generatedPassword.length < length) {
+          password += characters[Math.floor(Math.random() * characters.length)];
+      }
+  {
+  
+    passwordText.value = generatePassword;
+  
 
 }
+
+
+
+
 
 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword); {
-    var length = (document.getElementById("length").value);
-    var lowercase = document.getElementById("lowercase").checked;
-    var uppercase = document.getElementById("uppercase").checked;
-    var numbers = document.getElementById("numbers").checked;
-    var special = document.getElementById("special").checked;
-
-
-if(!special && !lowercase && !uppercase && !numbers) {
-    windows.alert("You must choose at least one character type");
-    
-
+   
 }
-    
-}
-
-/*
-document.getElementById("Btn").addEventListener("click", writePassword);{
-var length = (document.getElementById("length").value);
-var lowercase = document.getElementById("lowercase").checked;
-var uppercase = document.getElementById("uppercase").checked;
-var numbers = document.getElementById("numbers").checked;
-var special = document.getElementById("special").checked;
-
-
-if(!special && !lowercase && !uppercase && !numbers) {
-    alert("You must choose at least one character type");
-    
-
-}
-}
-*/
+      
 
 writePassword();
 
