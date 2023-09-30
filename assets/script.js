@@ -9,23 +9,32 @@ var special = "!@#$%^&*()_+";
 var numbers = "0123456789";
 
 
-prompt ("how many characters would you like your password to be?");
-
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  passwordText.value = generatedPassword;
+  /*passwordText.value = generatePassword;*/
 
 } 
 
 
 function generatePassword() {
+    var CharLength = prompt ("how many characters would you like your password to be?");
+    console.log(CharLength);
+    var specialCharacters = confirm ("Do you want special characters?");
+    console.log(specialCharacters);
+    var numbers = confirm ("Do you want numbers?");
+    console.log(numbers);
+    var lowerCase = confirm ("Do you want lower case characters?");
+    console.log(lowerCase);
+    var upperCase = confirm ("Do you want UPPER CASE characters?");
+    console.log(upperCase);
     
-  }
+}
  
- passwordText.value = writePassword;
+/* passwordText.value = writePassword;
+*/
   
 
 
@@ -34,9 +43,9 @@ generateBtn.addEventListener("click", writePassword); {
    
 }
       
-
+/*
 writePassword();
-
+*/
 
 
 
