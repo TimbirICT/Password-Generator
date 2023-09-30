@@ -25,7 +25,7 @@ function generatePassword() {
     
   }
  
- passwordText.value = generatePassword;
+ passwordText.value = writePassword;
   
 
 
