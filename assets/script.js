@@ -1,121 +1,65 @@
-// Assignment Code
+// Assignment Code // Sourced from Starter Code and W3schools, and StackOverflow
 var generateBtn = document.querySelector("#generate");
 
-
-var characters = lowerCase + upperCase + numbers + specialCharacters;
 var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var specialCharacters = "!@#$%^&*()_+";
 var numbers = "0123456789";
-var CharLength = "";
+var characters = lowerCase + upperCase + numbers + specialCharacters;
+ 
+function getRandomCharacter(charSet) {
+  var randomIndex = Math.floor(Math.random() * charSet.length);
+  return charSet.charAt(randomIndex);
+}
+
+
+
+// Sourced from Dylan Osborn, AskBCS, and ChatGPT
+
+function generatePassword() {
+    var charLength = prompt ("how many characters would you like your password to be?");
+    var includeSpecialCharacters = confirm ("Do you want special characters?");
+    var includeNumbers = confirm ("Do you want numbers?");
+    var includeLowerCase = confirm ("Do you want lower case characters?");
+    var includeUpperCase = confirm ("Do you want UPPER CASE characters?");
+    var password = "";
+
+    if (charLength < 8 || charLength > 128) {
+        alert ("Password must be between 8 and 128 characters");
+        return "";
+    }
+    if (!(includeSpecialCharacters || includeNumbers || includeLowerCase || includeUpperCase)) {
+        alert ("At least one character type must be selected");
+        return "";
+    }
+
+    var charSet = "";
+    if (includeLowerCase) charSet += lowerCase;
+    if (includeUpperCase) charSet += upperCase;
+    if (includeNumbers) charSet += numbers;
+    if (includeSpecialCharacters) charSet += specialCharacters;
+    
+    var password = "";
+    for (var i = 0; i < charLength; i++) {
+    password += getRandomCharacter(charSet);
+  }
+     
+    return password;
+}
 
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  if (password !== "") {
+  passwordText.value = password;
+  }
 }
- 
-  /*passwordText.value = generatePassword;*/
-
-
-
-
-
-
-function generatePassword() {
-    var CharLength = prompt ("how many characters would you like your password to be?");
-    var specialCharacters = confirm ("Do you want special characters?");
-    var numbers = confirm ("Do you want numbers?");
-    var lowerCase = confirm ("Do you want lower case characters?");
-    var upperCase = confirm ("Do you want UPPER CASE characters?");
-
-    if (CharLength < 8 || CharLength > 128) {
-        alert ("Password must be between 8 and 128 characters");
-        return;
-    }
-    if (specialCharacters === false && numbers === false && lowerCase === false && upperCase === false) {
-        alert ("You must choose at least one type of character");
-        return;
-    }
-    if (specialCharacters === true && numbers === true && lowerCase === true && upperCase === true) {
-        alert ("Password has been generated with special characters, numbers, lower case and UPPER CASE characters!");
-        return;
-    }
-    if (specialCharacters === true && numbers === true && lowerCase === true && upperCase === false) {
-        alert ("Password has been generated with special characters, numbers, & lower case characters!");
-        return;
-    }
-    if (specialCharacters === true && numbers === true && lowerCase === false && upperCase === true) {
-        alert ("Password has been generated with special characters, numbers, and UPPER CASE characters!");
-        return;
-    }
-    if (specialCharacters === true && numbers === true && lowerCase === false && upperCase === false) {
-        alert ("Password has been generated with special characters, & number characters!");
-        return;
-    }
-    if (specialCharacters === true && numbers === false && lowerCase === true && upperCase === true) {
-        alert ("Password has been generated with special characters, UPPER CASE & lower case characters!");
-        return;
-    }
-    if (specialCharacters === true && numbers === false && lowerCase === true && upperCase === false) {
-        alert ("Password has been generated with special characters, & lower case characters!");
-        return;
-    }
-    if (specialCharacters === true && numbers === false && lowerCase === false && upperCase === true) {
-        alert ("Password has been generated with special characters, & UPPER CASE characters!");
-        return;
-    }
-    if (specialCharacters === true && numbers === false && lowerCase === false && upperCase === false) {
-        alert ("Password has been generated with special characters only!");
-        return;
-    }
-    if (specialCharacters === false && numbers === true && lowerCase === true && upperCase === true) {
-        alert ("Password has been generated with numbers, Upper & lower case characters!");
-        return;
-    }
-    if (specialCharacters === false && numbers === true && lowerCase === true && upperCase === false) {
-        alert ("Password has been generated with numbers, & lower case characters!");
-        return;
-    }
-    if (specialCharacters === false && numbers === true && lowerCase === false && upperCase === true) {
-        alert ("Password has been generated with numbers, & UPPER CASE characters!");
-        return;
-    }
-    if (specialCharacters === false && numbers === true && lowerCase === false && upperCase === false) {
-        alert ("Password has been generated with numbers only!");
-        return;
-    }
-    if (specialCharacters === false && numbers === false && lowerCase === true && upperCase === true) {
-        alert ("Password has been generated with lower case, and upper case characters!");
-        return;
-    }
-    if (specialCharacters === false && numbers === false && lowerCase === true && upperCase === false) {
-        alert ("Password has been generated with lower case characters only!");
-        return;
-    }
-    if (specialCharacters === false && numbers === false && lowerCase === false && upperCase === true) {
-        alert ("Password has been generated with upper case characters only!");
-        return;
-    }
-    if (specialCharacters === false && numbers === false && lowerCase === false && upperCase === false) {
-        alert ("Password has been generated with no characters!");
-        return;
-    }
-     
-}
-
-
-/* passwordText.value = writePassword;
-*/
-  
 
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); {
-   
+var generateButton = document.querySelector("#generate");
+generateBtn.addEventListener("click", writePassword); {  
 }
       
-/*
-writePassword();
-*/
